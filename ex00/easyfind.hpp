@@ -2,25 +2,24 @@
 #define EASYFIND_HPP
 #include <iostream>
 #include <string>
+#include <vector>
+#include <algorithm>
+#include <list>
+#include <iterator>
 
 template <typename T>
 
-int easyfind(T &type, int occurrence){
-    try {
-        (void)static_cast<int *>(type);
-        std::cout << "BIEN" << std::endl;
+//iterator: un puntero inteligente que sabe recorrer los elementos de un contenedor (vector, lista, mapa, etc.) sin que tú tengas que preocuparte de cómo está implementado internamente ese contenedor.
+typename T::iterator easyfind(T &container, int occurrence){
+    typename T::iterator it = std::find(container.begin(), container.end(), occurrence);
+    if (it != container.end()){
+        std::cout << "Occurrence found in: " << std::distance(container.begin(), it) << std::endl;
+        return it;
     }
-    catch (const std::exception&){return 0;}
-
-    for (int i = 0; i < type.length(); i++)
-    {
-        if (occurrence == type[i]){
-            std::cout << "Hay una concurrencia en el punto " << i << std::endl;
-            return (i);
-        }
+    else{
+        std::cout << "No occurrence with the value " << occurrence << "." << std::endl;
+        return container.end();
     }
-    std::cout << "No hay ninguna ocurrencia ya lo siento" << std::endl;
-    return (0);
 }
 
 #endif
