@@ -29,7 +29,7 @@ unsigned int Span::longestSpan() {
 
     int maxVal = *std::max_element(_numbers.begin(), _numbers.end());
     int minVal = *std::min_element(_numbers.begin(), _numbers.end());
-    return maxVal - minVal;
+    return (maxVal - minVal);
 }
 
 unsigned int Span::shortestSpan() {
@@ -39,7 +39,7 @@ unsigned int Span::shortestSpan() {
     std::vector<int> sorted(_numbers);
     std::sort(sorted.begin(), sorted.end()); //de menor a mayor orden ascendente
 
-    int minSpan = 4294967295;
+    int minSpan = 2147483647;
     //int minSpan = std::numeric_limits<int>::max();
     for (size_t i = 0; i < sorted.size() - 1; ++i) {
         int diff = sorted[i+1] - sorted[i];

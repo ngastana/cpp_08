@@ -22,7 +22,7 @@ class Span{
         void addNumber(int n);
         unsigned int shortestSpan();
         unsigned int longestSpan();
-        
+
         //Last but not least, it would be wonderful to fill your Span using a range of iterators. Making thousands of calls to addNumber() is so annoying. Implement a member function to add multiple numbers to your Span in a single call.
         template <typename it>
         void addRange(it first, it last) {
