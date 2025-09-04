@@ -17,8 +17,14 @@ class MutantStack: public std::stack<T,Container> { //hereda la clase estandar s
 		MutantStack(const MutantStack &copy): std::stack<T, Container>(copy) {};
 		MutantStack &operator=(const MutantStack &other) {std::stack<T, Container>::operator=(other); return *this;}
 		~MutantStack(){};
-		iterator begin(void) {return (this->c.begin())};
-		iterator end(void) {return (this->c.end())};
+
+		typedef typename Container::iterator iterator;
+		iterator begin(void) {return (this->c.begin());};
+		iterator end(void) {return (this->c.end());};
+
+		typedef typename Container::iterator const_iterator;
+		const_iterator begin(void) const {return (this->c.begin());};
+		const_iterator end(void) const {return (this->c.end());};
 };
 
 #endif
